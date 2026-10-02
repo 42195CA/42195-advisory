@@ -1,0 +1,574 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dr. Xiaoyang Liu | Automotive AI & Engineering Architecture Collaboration</title>
+    <!-- Google Fonts & FontAwesome -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        :root {
+            --primary: #002c6c;
+            --primary-light: #0056b3;
+            --secondary: #00a896;
+            --dark: #0b1325;
+            --slate: #1e293b;
+            --text-main: #334155;
+            --text-muted: #64748b;
+            --bg-light: #f8fafc;
+            --card-bg: #ffffff;
+            --border-color: #e2e8f0;
+            --accent-marathon: #e63946;
+            --gold: #f59e0b;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-light);
+            color: var(--text-main);
+            line-height: 1.7;
+        }
+
+        /* Navigation */
+        nav {
+            position: sticky;
+            top: 0;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            border-bottom: 1px solid var(--border-color);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 5%;
+        }
+
+        .logo {
+            font-weight: 700;
+            font-size: 1.5rem;
+            color: var(--primary);
+            font-family: 'JetBrains Mono', monospace;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .logo img {
+            height: 45px;
+            width: auto;
+            object-fit: contain;
+        }
+
+        .logo span {
+            color: var(--accent-marathon);
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-main);
+            font-weight: 500;
+            transition: color 0.2s;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+
+        .btn-contact {
+            background-color: var(--primary);
+            color: #fff !important;
+            padding: 0.5rem 1.2rem;
+            border-radius: 6px;
+            font-weight: 500;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, var(--dark) 0%, #172554 100%);
+            color: #fff;
+            padding: 6rem 5% 5rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-content {
+            max-width: 1000px;
+            position: relative;
+            z-index: 2;
+            margin: 0 auto;
+        }
+
+        .hero-tagline {
+            color: var(--secondary);
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.95rem;
+            font-weight: 600;
+            letter-spacing: 1.5px;
+            margin-bottom: 1rem;
+            display: inline-block;
+            text-transform: uppercase;
+        }
+
+        .hero h1 {
+            font-size: 3.2rem;
+            font-weight: 700;
+            line-height: 1.2;
+            margin-bottom: 1.5rem;
+        }
+        
+        .marathon-text {
+            color: var(--accent-marathon);
+            font-family: 'JetBrains Mono', monospace;
+        }
+
+        .hero p {
+            font-size: 1.15rem;
+            color: #cbd5e1;
+            margin-bottom: 2.5rem;
+            max-width: 850px;
+        }
+
+        .credentials-badges {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.8rem;
+            margin-bottom: 2.5rem;
+        }
+
+        .badge {
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            color: #fff;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .badge.highlight {
+            background: rgba(230, 57, 70, 0.2);
+            border-color: var(--accent-marathon);
+        }
+
+        /* Experience Strip */
+        .experience-strip {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+            align-items: center;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px dashed rgba(255, 255, 255, 0.2);
+            padding: 1.2rem 1.5rem;
+            border-radius: 8px;
+            margin-top: 1rem;
+        }
+
+        .experience-strip span {
+            font-size: 0.95rem;
+            color: #e2e8f0;
+            font-weight: 500;
+        }
+
+        .experience-strip strong {
+            color: var(--gold);
+            letter-spacing: 0.5px;
+            font-size: 0.9rem;
+            margin-right: 0.5rem;
+            text-transform: uppercase;
+        }
+
+        /* General Sections */
+        .section-container {
+            padding: 6rem 5% 4rem;
+            max-width: 1200px;
+            margin: auto;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .section-header h2 {
+            font-size: 2.2rem;
+            color: var(--dark);
+            margin-bottom: 1rem;
+        }
+
+        .section-header p {
+            color: var(--text-muted);
+            font-size: 1.1rem;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        /* Expertise Grid */
+        .expertise-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
+        }
+
+        .expertise-card {
+            background: var(--card-bg);
+            border-radius: 8px;
+            padding: 2.5rem;
+            border: 1px solid var(--border-color);
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .expertise-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.08);
+            border-color: var(--primary-light);
+        }
+
+        .icon-box {
+            width: 50px;
+            height: 50px;
+            border-radius: 8px;
+            background: #e0f2fe;
+            color: var(--primary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .expertise-card h3 {
+            font-size: 1.3rem;
+            color: var(--slate);
+            margin-bottom: 1rem;
+        }
+
+        /* Timeline / Resume */
+        .resume-section {
+            background: #fff;
+            border-top: 1px solid var(--border-color);
+        }
+
+        .timeline {
+            max-width: 900px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: var(--border-color);
+        }
+
+        .timeline-item {
+            position: relative;
+            padding-left: 3rem;
+            margin-bottom: 3rem;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -4px;
+            top: 5px;
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: var(--secondary);
+            border: 3px solid #fff;
+            box-shadow: 0 0 0 3px var(--secondary);
+        }
+
+        .timeline-date {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.85rem;
+            color: var(--primary);
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .timeline-title {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--dark);
+            margin-bottom: 0.25rem;
+        }
+
+        .timeline-company {
+            font-size: 1rem;
+            color: var(--text-muted);
+            font-weight: 500;
+            margin-bottom: 1rem;
+        }
+
+        .timeline-content {
+            color: var(--text-main);
+            font-size: 0.95rem;
+        }
+
+        .timeline-content ul {
+            padding-left: 1.2rem;
+            margin-top: 0.5rem;
+        }
+
+        /* Education & Patents Grid */
+        .edu-patent-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            margin-top: 2rem;
+        }
+
+        .info-block {
+            background: var(--bg-light);
+            padding: 2rem;
+            border-radius: 8px;
+            border: 1px solid var(--border-color);
+        }
+
+        .info-block h3 {
+            color: var(--primary);
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--dark);
+            color: #94a3b8;
+            padding: 3rem 5%;
+            text-align: center;
+        }
+
+        @media (max-width: 768px) {
+            .nav-links { display: none; }
+            .hero h1 { font-size: 2.2rem; }
+            .edu-patent-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navigation -->
+    <nav>
+        <div class="logo">
+            <!-- Inserted Logo Image -->
+            <img src="42195CA.png" alt="42195.ca Logo">
+            <div>Dr. Xiaoyang Liu<span> Ultimate Reliability. </span></div>
+        </div>
+        <ul class="nav-links">
+            <li><a href="#expertise">Expertise</a></li>
+            <li><a href="#experience">Experience</a></li>
+            <li><a href="#education">Education & Patents</a></li>
+            <li><a href="#contact" class="btn-contact">Industry Collaboration</a></li>
+        </ul>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="hero">
+        <div class="hero-content">
+            <div class="hero-tagline">Physics-Informed Automotive Industrial AI & Architecture Research</div>
+            
+            <p>
+                Leveraging 20 years of R&D expertise, including <strong>13 years driving engineering innovation across the Big 3 US OEMs (Ford, GM, and FCA/Stellantis)</strong>. My research and industry collaboration efforts bridge atomic-level computational physics, Big Data telemetry, and Multi-Agent AI workflows to drive resilient supply chain risk optimization, ADAS sensor calibration, and systemic warranty prediction for heavy manufacturing.
+            </p>
+            <div class="credentials-badges">
+                <span class="badge highlight"><i class="fa-solid fa-car"></i> 13 Yrs Big 3 US OEMs</span>
+                <span class="badge"><i class="fa-solid fa-graduation-cap"></i> Ph.D. Quantum Eng. (2007)</span>
+                <span class="badge"><i class="fa-solid fa-stamp"></i> P.Eng. Canada (2012)</span>
+                <span class="badge"><i class="fa-solid fa-certificate"></i> PMP® Certified (2026)</span>
+            </div>
+
+            <div class="experience-strip">
+                <span><strong>Industry Track Record:</strong></span>
+                <span>Ford Motor Company</span>
+                <span style="color:var(--secondary)">|</span>
+                <span>General Motors</span>
+                <span style="color:var(--secondary)">|</span>
+                <span>FCA (Stellantis)</span>
+                <span style="color:var(--secondary)">|</span>
+                <span>Wescast Industries</span>
+            </div>
+        </div>
+    </header>
+
+    <!-- Expertise Section -->
+    <section class="section-container" id="expertise">
+        <div class="expertise-grid">
+            <div class="expertise-card">
+                <div class="icon-box"><i class="fa-solid fa-network-wired"></i></div>
+                <h3>Supply Chain Risk Prediction & AI Agents</h3>
+                <p>Architecting multi-agent generative systems based on foundational logic and LLMs to simulate "Black Swan" supply chain crises, establishing an end-to-end loop from prediction to human intervention.</p>
+            </div>
+            
+            <div class="expertise-card">
+                <div class="icon-box"><i class="fa-solid fa-camera"></i></div>
+                <h3>ADAS Sensor Alignment</h3>
+                <p>Developing autonomous driving-grade computer vision algorithms and leading high-concurrency, low-latency automated validation platforms for camera and sensor fusion calibration.</p>
+            </div>
+
+            <div class="expertise-card">
+                <div class="icon-box"><i class="fa-solid fa-shield-heart"></i></div>
+                <h3>Reliability & Warranty Prediction</h3>
+                <p>Moving beyond traditional Weibull models to formulate survival analysis and hybrid machine learning frameworks. Accurately capturing early warranty anomaly spikes to significantly reduce claim costs.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience Timeline -->
+    <section class="resume-section" id="experience">
+        <div class="section-container">
+            <div class="section-header">
+                <h2>13 Years Automaker Experience</h2>
+            </div>
+            
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-date">Nov 2024 - Present</div>
+                    <div class="timeline-title">Data Scientist of Supply Chain Optimization</div>
+                    <div class="timeline-company">Ford Motor Company | Dearborn, MI</div>
+                    <div class="timeline-content">
+                        <p>Leading the AI-driven restructuring of global supply chain networks. Utilizing advanced predictive models and agentic workflows to optimize component routing, improving on-time delivery rates and risk resilience for millions of vehicles.</p>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-date">Nov 2020 - Nov 2024</div>
+                    <div class="timeline-title">Senior AI/ML Engineer & Advanced Technical Specialist in Sensing System Alignment</div>
+                    <div class="timeline-company">General Motors | Warren, MI</div>
+                    <div class="timeline-content">
+                        <ul>
+                            <li>Led the development of next-generation ADAS and autonomous driving sensor calibration algorithms.</li>
+                            <li>Received internal critical talent recognition and excellence awards in 2023.</li>
+                            <li>Served as core inventor, filing and securing US patents for innovative sensing alignment technologies.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-date">May 2017 - Nov 2020</div>
+                    <div class="timeline-title">Data Scientist, Senior Technical Specialist in Reliability</div>
+                    <div class="timeline-company">FCA Fiat Chrysler Automobiles | Auburn Hills, MI</div>
+                    <div class="timeline-content">
+                        <ul>
+                            <li>Established comprehensive full-lifecycle vehicle reliability tracking and prediction systems.</li>
+                            <li>Awarded the FCA Quality Recognition of Excellence consecutively in 2018 and 2019.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-date">Apr 2013 - May 2017</div>
+                    <div class="timeline-title">Data Scientist on Lifetime Prediction and Process Optimization</div>
+                    <div class="timeline-company">Wescast Industries Inc. | Brantford, ON, Canada</div>
+                    <div class="timeline-content">
+                        <p>Applied machine learning to material lifetime prediction and industrial casting process control, significantly enhancing process stability and product qualification rates.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Education & Patents -->
+    <section class="section-container" id="education">
+        <div class="section-header">
+            <h2>Foundational Logic: From Quantum Physics to Industry</h2>
+            <p>Applying rigorous atomic-level mathematical reasoning to modern artificial intelligence architectures.</p>
+        </div>
+
+        <div class="edu-patent-grid">
+            <div class="info-block">
+                <h3><i class="fa-solid fa-university"></i> Academic & Research Background</h3>
+                <ul style="line-height: 2; margin-left: 1.5rem; color: var(--text-muted);">
+                    <li><strong>The University of Tokyo</strong><br>Ph.D., Quantum Engineering and Systems Science | 2004 - 2007</li>
+                    <li><strong>Tsinghua University</strong><br>Master's degree, Engineering Physics | 2000 - 2003</li>
+                    <li><strong>Tsinghua University</strong><br>Bachelor's degree, Engineering Physics | 1996 - 2000</li>
+                    <li style="margin-top: 1rem;"><strong>Postdoctoral Fellow (Computational Materials)</strong> | University of Alberta | 2009 - 2012</li>
+                    <li><strong>Research Associate (Computational Physics)</strong> | The University of Tokyo | 2007 - 2009</li>
+                </ul>
+            </div>
+
+            <div class="info-block">
+                <h3><i class="fa-solid fa-scroll"></i> Patents, Certifications & Honors</h3>
+                <ul style="line-height: 2; margin-left: 1.5rem; color: var(--text-muted);">
+                    <li><strong>4 US Patents:</strong><br>Inventor of patents covering computer vision and AI-driven hands-free interaction devices designed to enhance user experience and safety in automotive environments.</li>
+                    <li><strong>P.Eng. (Professional Engineer):</strong><br>Certified in Ontario, Canada, ensuring engineering standards and compliance (Since 2012).</li>
+                    <li><strong>PMP® (Project Management Professional):</strong><br>Internationally recognized project management certification (2026).</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Form Section (NIW Optimized) -->
+    <section class="section-container" id="contact">
+        <div class="section-header">
+            <h2>Industry Collaborations & Speaking Engagements</h2>
+            <p>Reach out directly to discuss research partnerships, industry collaborations, peer review opportunities, or technical speaking engagements.</p>
+        </div>
+        
+        <div style="max-width: 600px; margin: 0 auto; background: var(--card-bg); padding: 2.5rem; border-radius: 8px; border: 1px solid var(--border-color); box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05);">
+            <!-- Formspree Integration -->
+            <form action="https://formspree.io/f/xgavbbpb" method="POST" style="display: flex; flex-direction: column; gap: 1.5rem;">
+                
+                <div>
+                    <label style="font-weight: 600; font-size: 0.9rem; color: var(--slate);">Name / Organization</label>
+                    <input type="text" name="name" required style="width: 100%; padding: 0.75rem; margin-top: 0.5rem; border: 1px solid var(--border-color); border-radius: 4px; font-family: inherit;">
+                </div>
+
+                <div>
+                    <label style="font-weight: 600; font-size: 0.9rem; color: var(--slate);">Corporate Email</label>
+                    <input type="email" name="email" required style="width: 100%; padding: 0.75rem; margin-top: 0.5rem; border: 1px solid var(--border-color); border-radius: 4px; font-family: inherit;">
+                </div>
+
+                <div>
+                    <label style="font-weight: 600; font-size: 0.9rem; color: var(--slate);">Collaboration Scope / Inquiry</label>
+                    <textarea name="message" rows="5" required style="width: 100%; padding: 0.75rem; margin-top: 0.5rem; border: 1px solid var(--border-color); border-radius: 4px; font-family: inherit; resize: vertical;"></textarea>
+                </div>
+
+                <button type="submit" class="btn-contact" style="border: none; cursor: pointer; padding: 1rem; font-size: 1rem; margin-top: 0.5rem; transition: background 0.2s;">
+                    <i class="fa-solid fa-paper-plane" style="margin-right: 0.5rem;"></i> Send Message
+                </button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div style="display: flex; justify-content: center; align-items: center; gap: 0.5rem; margin-bottom: 0.5rem;">
+            <img src="42195CA.png" alt="42195.ca Logo" style="height: 30px; width: auto;">
+            <h2 style="color: #fff; font-family: 'JetBrains Mono', monospace; font-size: 1.5rem; margin: 0;">42195.ca</h2>
+        </div>
+        <p><strong>Dr. Xiaoyang Liu</strong> | Data Scientist, P.Eng., PMP®</p>
+        <p style="margin-top: 1rem; font-size: 0.85rem;">Auburn Hills, Michigan, United States | xiaoyang.liu@gmail.com</p>
+        <p style="margin-top: 2rem; font-size: 0.75rem; color: #475569;">&copy; 2026 Dr. Xiaoyang Liu. All rights reserved.</p>
+    </footer>
+
+</body>
+</html>
